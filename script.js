@@ -55,6 +55,30 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
   }
 });
 
+///Tabbed Component
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
+
+tabsContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".operations__tab");
+  //Guard clause
+  if (!clicked) return;
+  //Remove active classes
+  tabs.forEach((t) => {
+    t.classList.remove("operations__tab--active");
+  });
+  tabsContent.forEach((c) => {
+    c.classList.remove("operations__content--active");
+  });
+  //Active tab
+  clicked.classList.add("operations__tab--active");
+
+  //Active content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add("operations__content--active");
+});
 /*
 console.log(document.querySelector(".header"));
 const allSections = document.querySelectorAll(".section");
@@ -64,6 +88,8 @@ console.log(allButtons);
 console.log(document.getElementsByClassName("btn"));
 */
 
+////Cookie
+/*
 const message = document.createElement("div");
 message.classList.add("cookie-message");
 message.innerHTML =
@@ -75,11 +101,12 @@ document
   .addEventListener("click", function () {
     message.remove();
   });
+  */
 
-//Styles
-message.style.backgroundColor = "#37383d";
-message.style.width = "110%";
-document.documentElement.style.setProperty("--color-primary", "orangered");
+/////Styles
+//message.style.backgroundColor = "#37383d";
+//message.style.width = "110%";
+//document.documentElement.style.setProperty("--color-primary", "orangered");
 
 //Attributes
 //const logo = document.querySelector(".nav__logo");
@@ -102,7 +129,7 @@ const link = document.querySelector(".nav__link--btn");
 //console.log(logo.dataset.versionNumber);
 
 //Handling Events
-
+/*
 const h1 = document.querySelector("h1");
 
 const alertH1 = function (e) {
@@ -112,6 +139,7 @@ const alertH1 = function (e) {
 h1.addEventListener("mouseenter", alertH1);
 
 setTimeout(() => h1.removeEventListener("mouseenter", alertH1));
+*/
 
 //Random Color
 /*
@@ -135,5 +163,31 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
 document.querySelector(".nav").addEventListener("click", function (e) {
   console.log("nav", e.target, e.currentTarget);
   this.style.backgroundColor = randomColor();
+});
+*/
+
+////Going downwards: child
+const h1 = document.querySelector("h1");
+//console.log(h1.querySelectorAll(".highlight"));
+//console.log(h1.childNodes);
+//console.log(h1.children);
+//h1.firstElementChild.style.color = "orangered";
+//h1.lastElementChild.style.color = "green";
+
+////Going upwards: parents
+//console.log(h1.parentNode);
+//console.log(h1.parentElement);
+//h1.closest(".header").style.background = "var(--gradient-secondary)";
+//h1.closest("h1").style.background = "var(--gradient-primary)";
+
+///Going sideways: siblings
+//console.log(h1.previousElementSibling);
+//console.log(h1.nextElementSibling);
+//console.log(h1.parentElement.children);
+/*
+[...h1.parentElement.children].forEach((el) => {
+  if (el !== h1) {
+    el.style.transform = "scale(0.5)";
+  }
 });
 */
